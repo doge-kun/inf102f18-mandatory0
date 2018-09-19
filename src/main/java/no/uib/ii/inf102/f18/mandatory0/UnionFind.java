@@ -52,7 +52,7 @@ public class UnionFind implements IUnionFind {
             UnionFind unionFind = new UnionFind(nAccs);
             int a, b, l;
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < queries; i++) {
+            for (int i = 0; i<queries; i++) {
                 line = in.readLine();
                 tokens = line.split(" ");
                 if (tokens[0].equals("DAEMON")) {

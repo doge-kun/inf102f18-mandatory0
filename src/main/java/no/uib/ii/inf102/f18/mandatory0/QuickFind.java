@@ -3,7 +3,7 @@ package no.uib.ii.inf102.f18.mandatory0;
 import java.util.Scanner;
 
 public class QuickFind implements IUnionFind {
-    private static int[] id;
+    private int[] id;
 
     public QuickFind(int n) {
         id = new int[n];
@@ -57,7 +57,7 @@ public class QuickFind implements IUnionFind {
         String solution = "";
 
         for(int i=0; i<n; i++) {
-            solution += id[i] + " ";
+            solution += quickFind.id[i] + " ";
         }
 
         solution = solution.substring(0, solution.length()-1);

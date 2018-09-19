@@ -1,11 +1,13 @@
 package no.uib.ii.inf102.f18.mandatory0;
 
+import java.io.*;
 import java.util.Iterator;
 
 public class SortableLinkedList<E extends Comparable<E>> implements ISortableList<E> {
     private static int counter;
     private Node head = null;
     private Node tail = null;
+
 
     private class Node {
         Node next;
@@ -199,21 +201,27 @@ public class SortableLinkedList<E extends Comparable<E>> implements ISortableLis
     }
 
     public static void main(String[] args) {
-        SortableLinkedList<String> list = new SortableLinkedList<String>();
+        SortableLinkedList list = new SortableLinkedList();
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-        list.add("i"); list.add("m"); list.add("x"); list.add("k"); list.add("v"); list.add("o"); list.add("c");
-        list.add("n"); list.add("u"); list.add("t"); list.add("r"); list.add("s"); list.add("b"); list.add("e");
-        list.add("a"); list.add("q"); list.add("j"); list.add("d"); list.add("f"); list.add("g"); list.add("z");
-        list.add("l"); list.add("h"); list.add("y"); list.add("p"); list.add("w");
+        try {
+            String line = in.readLine();
+            String[] tokens = line.split(" ");
+            int nPages = Integer.parseInt(tokens[0]);
 
-        //list.add('!'); list.add('´'); list.add(':'); list.add('#'); list.add('/'); list.add('*'); list.add('+');
-        //list.add('"'); list.add('%'); list.add('.'); list.add('&'); list.add(')'); list.add('('); list.add('-');
+            for(int i=0; i<nPages; i++) {
+                String page = in.readLine();
+                tokens = page.split(" ");
+                int pageNr = Integer.parseInt(tokens[1]);
+                Pair unsortedPage = new Pair(pageNr, tokens[0]);
+                list.add(unsortedPage);
+            }
+        } catch (IOException e) {
+            System.exit(1);
+        }
 
-        //list.add("7"); list.add("1"); //list.add("6"); list.add("2"); list.add("8"); list.add("4"); list.add("9");
-        //list.add("3"); list.add("5");
-
-        list.printLinkedList(list.head);
-        System.out.println();
+        //list.printLinkedList(list.head);
+        //System.out.println();
         list.head = list.mergeSort(list.head);
         list.printLinkedList(list.head);
     }
